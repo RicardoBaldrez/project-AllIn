@@ -1,0 +1,23 @@
+version: '2'
+
+services:
+
+  httpd:
+    container_name: laravel
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - ../../:/app/
+    ports:
+      - 80:80
+    environment: 
+      WEB_DOCUMENT_ROOT: "/app/laravel/public"
+
+  db:
+    image: mariadb
+    container_name: mariadb
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: "1212"

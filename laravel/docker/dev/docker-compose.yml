@@ -1,0 +1,35 @@
+version: '2'
+
+services:
+
+  ricardo-web:
+    container_name: ricardo-web
+    build: ./app
+    volumes:
+      - ../../:/app/
+    environment:
+      APP_ENV: local
+    ports:
+      - 8012:80
+      - 9222:9222
+    command: ["php", "-S" , "0.0.0.0:80", "-t", "/app/public"]
+
+  ricardo-db:
+    image: mysql:5.6
+    container_name: ricardo-db
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: homestead
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      TERM: xterm
+      TZ: America/Sao_Paulo
+    command: --secure-file-priv=/sql
+    volumes:
+      - ../../database/sql:/sql
+      - ricardo-db:/var/lib/mysql
+      - ./db-core.entrypoint:/entrypoint-initdb.d
+
+volumes:
+  ricardo-db:
+    driver: local
