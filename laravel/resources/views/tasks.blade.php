@@ -29,16 +29,15 @@
     @if (count($tasks) > 0)
         <div class="panel panel-default">
             <div class="panel-heading">
-                Current Tasksnte
+                Current Tasks
             </div>
 
-            <div class="panel-body">
-                <table class="table table-striped task-table">
+            <div class="">
+                <table class="table table-striped">
 
                     <!-- Table Headings -->
                     <thead>
-                        <th>Task</th>
-                        <th>&nbsp;</th>
+                        <h3 style="padding: 0px 0px 5px 20px; font-weight: bold; text-shadow: 2px 2px 1px rgba(0,0,0, 0.4)">Tasks</h3>
                     </thead>
 
                     <!-- Table Body -->
@@ -47,10 +46,10 @@
                             <tr>
                                 <td class="table-text">
                                     <div> 
-                                        <span style="font-weight: bold">id:</span> {{$task->id}}, 
-                                        <span style="font-weight: bold">name:</span> {{$task->name}}, 
-                                        <span style="font-weight: bold">created in:</span> {{$task->created_at}} ...
-                                        <span style="font-weight: bold">update in:</span> {{$task->updated_at}}
+                                        <span style="font-weight: bold">id:</span> {{$task->id}}<br>
+                                        <span style="font-weight: bold">name:</span> {{$task->name}}<br>
+                                        <span style="font-weight: bold">created in:</span> {{$task->created_at->format('d/m/Y H:i:s')}}<br>
+                                        <span style="font-weight: bold">update in:</span> {{$task->updated_at->format('d/m/Y H:i:s')}}
                                     </div>
                                 </td>
                                 <!-- Change Button -->
@@ -58,7 +57,7 @@
                                     <form action="/task/{{$task->id}}" method="POST">
                                         {{csrf_field()}}
                                         {{method_field('GET')}}
-                                        <button class="btn btn-default">Change Task</button>
+                                        <button style="margin-top: 5%;" class="btn btn-default">Change Task</button>
                                     </form>
                                 </td>
                                 <!-- Delete Button -->
@@ -66,7 +65,7 @@
                                     <form action="/task/{{$task->id}}" method="POST">
                                         {{csrf_field()}}
                                         {{method_field('DELETE')}}
-                                        <button class="btn btn-danger">Delete Task</button>
+                                        <button style="margin-top: 5%;" class="btn btn-danger">Delete Task</button>
                                     </form>
                                 </td>
                             </tr>

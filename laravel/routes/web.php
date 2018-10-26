@@ -34,46 +34,32 @@ Route::post('/task', function (Request $request) {
     $validator = Validator::make($request->all(), [
         'name' => 'required|max:255',
     ]);
-
+    
     if($validator->fails()) {
         return redirect('/')
             ->withInput()
             ->withErrors($validator);
     }
-
+    
     $task = new Task;
     $task->name = $request->name;
     $task->save();
-
+    
     return redirect('/');
+    
 });
 
 /**
- * Delete An Existing Task
+ * Delete Task
  */
-Route::delete('/task/{id}', function ($id) {
-    Task::findOrFail($id)->delete();
-
-    return redirect('/');
-});
+Route::delete('/task/{id}', 'TaskController@deleteTask');
 
 /**
- * Change An Existing Task
+ * Recover Task
  */
-Route::get('/task/{id}', 'TaskController@edit');
+Route::get('/task/{id}', 'TaskController@recoveringTask');
 
-Route::patch('/task/edit', function(Request $request) {
-    $form = $request->all();
-    $task = Task::findOrFail($form['id']);
-    $task->name = $form['nameChange'];
-
-    var_dump($form);
-    var_dump($task);
-    var_dump($task->name = $form['nameChange']);
-
-    die();
-
-    $task->save();
-
-    return redirect('/');
-});
+/**
+ * Change Task
+ */
+Route::patch('/task/edit', 'TaskController@editNameTask');
