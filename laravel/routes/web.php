@@ -60,11 +60,20 @@ Route::delete('/task/{id}', function ($id) {
 /**
  * Change An Existing Task
  */
-// Route::patch('/task/{id}', function ($id) {
+Route::get('/task/{id}', 'TaskController@edit');
 
-//     echo "<p>" . Task::find($id) . "</p>";
+Route::patch('/task/edit', function(Request $request) {
+    $form = $request->all();
+    $task = Task::findOrFail($form['id']);
+    $task->name = $form['nameChange'];
 
-//     // return redirect('');
-// });
+    var_dump($form);
+    var_dump($task);
+    var_dump($task->name = $form['nameChange']);
 
-Route::patch('/task/{id}', 'TaskController@edit');
+    die();
+
+    $task->save();
+
+    return redirect('/');
+});

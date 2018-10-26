@@ -29,7 +29,7 @@
     @if (count($tasks) > 0)
         <div class="panel panel-default">
             <div class="panel-heading">
-                Current Tasks
+                Current Tasksnte
             </div>
 
             <div class="panel-body">
@@ -50,8 +50,16 @@
                                         <span style="font-weight: bold">id:</span> {{$task->id}}, 
                                         <span style="font-weight: bold">name:</span> {{$task->name}}, 
                                         <span style="font-weight: bold">created in:</span> {{$task->created_at}} ...
-                                        <span style="font-weight: bold">update in:</span> {{$task->update_at}}
+                                        <span style="font-weight: bold">update in:</span> {{$task->updated_at}}
                                     </div>
+                                </td>
+                                <!-- Change Button -->
+                                <td>
+                                    <form action="/task/{{$task->id}}" method="POST">
+                                        {{csrf_field()}}
+                                        {{method_field('GET')}}
+                                        <button class="btn btn-default">Change Task</button>
+                                    </form>
                                 </td>
                                 <!-- Delete Button -->
                                 <td>
@@ -59,13 +67,6 @@
                                         {{csrf_field()}}
                                         {{method_field('DELETE')}}
                                         <button class="btn btn-danger">Delete Task</button>
-                                    </form>
-                                </td>
-                                <td>
-                                    <form action="/task/{{$task->id}}" method="POST">
-                                        {{csrf_field()}}
-                                        {{method_field('PATCH')}}
-                                        <button class="btn btn-default">Change Task</button>
                                     </form>
                                 </td>
                             </tr>
