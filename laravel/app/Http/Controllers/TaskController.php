@@ -63,10 +63,6 @@ class TaskController extends Controller
         $task = Task::findOrFail($form['id']);
         $task->name = $form['nameChange'];
 
-        var_dump($form);
-        var_dump($task);
-        var_dump($task->name = $form['nameChange']);
-
         $task->save();
 
         return redirect('/');
