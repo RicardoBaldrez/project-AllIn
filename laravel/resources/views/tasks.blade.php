@@ -27,14 +27,13 @@
     
     <!-- Current Tasks -->
     @if (count($tasks) > 0)
-        <div class="panel panel-default">
+        <div class="panel panel-default"style="width: 50%; margin: 0 auto;">
             <div class="panel-heading">
                 Current Tasks
             </div>
 
-            <div class="">
+            <div>
                 <table class="table table-striped">
-
                     <!-- Table Headings -->
                     <thead>
                         <h3 style="padding: 0px 0px 5px 20px; font-weight: bold; text-shadow: 2px 2px 1px rgba(0,0,0, 0.4)">Tasks</h3>
