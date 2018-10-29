@@ -17,14 +17,7 @@ use Illuminate\Http\Request;
 /**
  * Display All Tasks
  */
-Route::get('/', function () {
-
-    $tasks = Task::orderBy('created_at', 'asc')->get();
-
-    return view('tasks', [
-        'tasks' => $tasks,
-    ]);
-});
+Route::get('/', 'TaskController@displayTasks');
 
 /**
  * Add A New Task

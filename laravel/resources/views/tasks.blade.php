@@ -53,19 +53,19 @@
                                     </div>
                                 </td>
                                 <!-- Change Button -->
-                                <td>
+                                <td class="col-md-1" style="">
                                     <form action="/task/{{$task->id}}" method="POST">
                                         {{csrf_field()}}
                                         {{method_field('GET')}}
-                                        <button style="margin-top: 5%;" class="btn btn-default">Change Task</button>
+                                        <button style="margin-top: 15%; padding: 10px 20px;" class="btn btn-default"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>
                                     </form>
                                 </td>
                                 <!-- Delete Button -->
-                                <td>
+                                <td class="col-md-1">
                                     <form action="/task/{{$task->id}}" method="POST">
                                         {{csrf_field()}}
                                         {{method_field('DELETE')}}
-                                        <button style="margin-top: 5%;" class="btn btn-danger">Delete Task</button>
+                                        <button style="margin-top: 15%; padding: 10px 20px;" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
                                     </form>
                                 </td>
                             </tr>
